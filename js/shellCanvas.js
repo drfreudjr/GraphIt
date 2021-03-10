@@ -41,8 +41,28 @@ window.onload = function () {           // onload wrapper
     }
 
 
+    let graphIt = {
+        radius : 10,
 
+    }
 
+    function getTickSize() {
+        let smallerAxis = null
+        if (innerHeight < innerWidth)
+            smallerAxis = innerHeight
+        else
+            smallerAxis = innerWidth
+        return (smallerAxis/radius+1) // add 1 to avoid fractional issues
+    }
+
+    function drawAxis () {
+        context.beginPath() // draw axis
+        context.moveTo(0, innerHeight/2)
+        context.lineTo(innerWidth, innerHeight/2)
+        context.moveTo(innerWidth/2,0)
+        context.lineTo(innerWidth/2,innerHeight)
+        context.stroke()
+    }
 
     function plotFrame () {
         context.fillStyle = 'orange'
@@ -51,16 +71,7 @@ window.onload = function () {           // onload wrapper
         context.setTransform(1,0,0,1,0,0)
         context.strokeStyle = 'black'
         context.lineWidth = 1
-
-        context.beginPath() // draw axis
-        context.moveTo(0, innerHeight/2)
-        context.lineTo(innerWidth, innerHeight/2)
-        context.moveTo(innerWidth/2,0)
-        context.lineTo(innerWidth/2,innerHeight)
-        context.stroke()
-
-
-
+        drawAxis()
     }
 
     }   // end main wrapper
