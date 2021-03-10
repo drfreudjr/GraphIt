@@ -40,12 +40,26 @@ window.onload = function () {           // onload wrapper
            }, 1000 / fps)
     }
 
+
+
+
+
     function plotFrame () {
         context.fillStyle = 'orange'
         context.fillRect(0,0,canvas.width,canvas.height)
 
-        context.fillStyle = 'red'
-        context.fillRect(innerWidth/3, innerHeight/3, innerWidth/3,innerHeight/3)
+        context.setTransform(1,0,0,1,0,0)
+        context.strokeStyle = 'black'
+        context.lineWidth = 1
+
+        context.beginPath() // draw axis
+        context.moveTo(0, innerHeight/2)
+        context.lineTo(innerWidth, innerHeight/2)
+        context.moveTo(innerWidth/2,0)
+        context.lineTo(innerWidth/2,innerHeight)
+        context.stroke()
+
+
 
     }
 
